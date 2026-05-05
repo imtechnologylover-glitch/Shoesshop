@@ -1,28 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeZone - Premium Footwear Collection</title>
     <link rel="stylesheet" href="style.css">
-    <title>ShoeStore | Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class="logo">SHOE'D</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="men.html">Men</a></li>
-            <li><a href="women.html">Women</a></li>
-            <li><a href="cart.html">My Cart</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h1>Latest Arrivals</h1>
-        <div class="product-grid">
-            <div class="card">
-                <h3>Street Walker X</h3>
-                <p>$99.00</p>
-                <a href="cart.html" class="btn">Add to Cart</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav">
+                <a href="#" class="logo">
+                    <i class="fas fa-shoe-prints"></i> ShoeZone
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#products" class="nav-link">Shop</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="header-actions">
+                    <a href="#" class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
             </div>
-            </div>
+        </div>
+    </header>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for shoes...">
+            <button class="close-search" id="closeSearch">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
     </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Step Into Style</h1>
+            <p>Discover the perfect pair for every occasion</p>
+            <a href="#products" class="cta-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products section">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="sneakers">Sneakers</button>
+                <button class="filter-btn" data-filter="boots">Boots</button>
+                <button class="filter-btn" data-filter="formal">Formal</button>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <button class="close-cart" id="closeCart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p>Your cart is empty</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total: $<span id="cartTotal">0</span></span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ShoeZone</h3>
+                    <p>Your one-stop shop for premium footwear.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Shop</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ShoeZone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
