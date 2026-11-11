@@ -1,27 +1,851 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIELIT - View Result</title>
+
 <style>
-.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container img{
-    width: 200px;
-    height: auto;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+/* HEADER */
+
+.header {
+    height: 113px;
+    background: #91bbd5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
+
+.logo {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-symbol {
+    width: 80px;
+    height: 90px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 65% 25%, #0874bd 0 8px, transparent 9px),
+      radial-gradient(ellipse at 50% 60%, #25a4dc 0 30px, #24518e 31px 37px, transparent 38px);
+    position: relative;
+}
+
+.logo-symbol::before {
+    content: "";
+    position: absolute;
+    width: 65px;
+    height: 45px;
+    top: 8px;
+    left: 5px;
+    border-top: 5px solid #b6d638;
+    border-radius: 50%;
+    transform: rotate(-25deg);
+}
+
+.logo-text {
+    color: #244b91;
+    font-size: 37px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo-text small {
+    display: block;
+    font-size: 22px;
+    letter-spacing: 0;
+}
+
+.header-title {
+    text-align: center;
+    flex: 1;
+    padding-right: 40px;
+}
+
+.header-title h1 {
+    font-size: 24px;
+    color: #080d58;
+    font-weight: bold;
+}
+
+.header-title p {
+    font-size: 17px;
+    margin-top: 5px;
+}
+
+/* TOP NAVIGATION */
+
+.topbar {
+    height: 51px;
+    background: linear-gradient(to bottom, #071b2b, #47769a);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    color: white;
+}
+
+.datetime {
+    font-family: Georgia, serif;
+    font-size: 23px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-icons span {
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2877bd;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+/* MAIN LAYOUT */
+
+.container {
+    display: flex;
+    gap: 10px;
+    padding: 7px 7px;
+}
+
+.main-content {
+    width: 77%;
+}
+
+.sidebar {
+    width: 23%;
+    padding: 0 7px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+/* PAGE TITLE */
+
+.page-title {
+    font-size: 27px;
+    font-weight: normal;
+    padding: 1px 5px 7px;
+    border-bottom: 2px solid #111;
+}
+
+/* BREADCRUMB */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    margin: 6px 0 11px 3px;
+}
+
+.breadcrumb span {
+    background: linear-gradient(#e9f4fa, #c6dce9);
+    border: 1px solid #c0d8e6;
+    padding: 11px 18px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    position: relative;
+    margin-right: 15px;
+}
+
+.breadcrumb span:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background: #d7e9f3;
+    border-right: 1px solid #c0d8e6;
+    border-top: 1px solid #c0d8e6;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+/* SEARCH OPTIONS */
+
+.search-options {
+    height: 47px;
+    background: #315a7c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.search-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.search-options input {
+    width: 23px;
+    height: 23px;
+    accent-color: #168bea;
+}
+
+/* FORM */
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+.form-table td {
+    padding: 5px;
+    border: 1px solid white;
+    height: 46px;
+}
+
+.form-table tr:nth-child(odd) {
+    background: #cedae5;
+}
+
+.form-table tr:nth-child(even) {
+    background: #e6f0ef;
+}
+
+.form-table td:first-child {
+    width: 30%;
+}
+
+.form-table td:nth-child(2) {
+    width: 35%;
+}
+
+.form-table td:nth-child(3) {
+    width: 35%;
+}
+
+.form-table input[type="text"],
+.form-table select {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #4285bd;
+    box-shadow: inset 0 0 2px #aaa;
+    padding: 3px;
+    font-size: 18px;
+    background: white;
+}
+
+.form-table select {
+    border-radius: 20px;
+    font-weight: bold;
+    padding-left: 8px;
+    height: 35px;
+}
+
+.form-table input:focus,
+.form-table select:focus {
+    outline: 1px solid #247ac0;
+}
+
+.hint {
+    font-size: 16px;
+}
+
+.dob-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.calendar {
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* CAPTCHA */
+
+.captcha-area {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#captchaCanvas {
+    width: 230px;
+    height: 63px;
+    background: #050505;
+}
+
+.refresh {
+    font-size: 27px;
+    color: #3779b7;
+    background: white;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    width: 49px;
+    height: 45px;
+    cursor: pointer;
+    margin-left: 0;
+}
+
+.captcha-hint {
+    padding-left: 20px !important;
+    font-size: 16px;
+    line-height: 27px;
+}
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.buttons button {
+    border: 1px solid #999;
+    background: linear-gradient(#fff, #7991a8);
+    padding: 7px 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 1px 2px #aaa;
+}
+
+.buttons button:hover {
+    background: #b6ccdc;
+}
+
+/* SIDEBAR */
+
+.side-box {
+    height: 61px;
+    background: repeating-linear-gradient(
+        135deg,
+        #d7eaf6,
+        #d7eaf6 3px,
+        #c9deed 3px,
+        #c9deed 6px
+    );
+    border: 1px solid #a5bdce;
+    box-shadow: inset 0 0 5px #829bad;
+    margin: 5px 0 31px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.side-box:hover {
+    background: #b9d6e8;
+}
+
+.side-icon {
+    width: 67px;
+    text-align: center;
+    font-size: 35px;
+    color: #244e70;
+}
+
+.side-links {
+    margin-top: 0;
+}
+
+.side-links a {
+    display: flex;
+    align-items: center;
+    height: 53px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #111;
+    font-size: 17px;
+    padding: 0 7px;
+    background: #fff;
+}
+
+.side-links a:hover {
+    background: #e4eff6;
+}
+
+.download-icon {
+    font-size: 34px;
+    color: #4489ae;
+    margin-right: 10px;
+    text-shadow: 1px 2px 2px #777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+    .header {
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .header-title {
+        padding: 10px 0;
+    }
+
+    .header-title h1 {
+        font-size: 18px;
+    }
+
+    .header-title p {
+        font-size: 13px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .main-content,
+    .sidebar {
+        width: 100%;
+    }
+
+    .search-options {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-table {
+        font-size: 14px;
+    }
+
+    .form-table td:first-child {
+        width: 28%;
+    }
+
+    .form-table td:nth-child(2) {
+        width: 42%;
+    }
+
+    .form-table td:nth-child(3) {
+        width: 30%;
+    }
+
+    .form-table input[type="text"],
+    .form-table select {
+        font-size: 14px;
+    }
+
+    .hint,
+    .captcha-hint {
+        font-size: 12px;
+    }
+
+    .sidebar {
+        margin-top: 20px;
+    }
+
+    .datetime {
+        font-size: 15px;
+    }
+
+    .breadcrumb span {
+        font-size: 13px;
+        padding: 9px;
+    }
+}
+
+@media(max-width: 500px) {
+    .form-table td:nth-child(3) {
+        display: none;
+    }
+
+    .form-table td:nth-child(2) {
+        width: 72%;
+    }
+
+    .form-table td:first-child {
+        width: 28%;
+    }
+
+    .captcha-area {
+        flex-wrap: wrap;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <img src="left.jpg" alt="Left Image">
+<!-- HEADER -->
 
-    <img src="right.jpg" alt="Right Image">
+<header class="header">
+
+    <div class="logo">
+        <div class="logo-symbol"></div>
+        <div class="logo-text">
+            <small>रा.इ.सू.प्रौ.सं</small>
+            NIELIT
+        </div>
+    </div>
+
+    <div class="header-title">
+        <h1>National Institute of Electronics and Information Technology</h1>
+        <p>Ministry of Electronics and Information Technology, Government of India</p>
+    </div>
+
+</header>
+
+<!-- NAVBAR -->
+
+<div class="topbar">
+
+    <div class="datetime" id="datetime">
+        November 11, 2026; 2:10:19 PM
+    </div>
+
+    <div class="social-icons">
+        <span>f</span>
+        <span>t</span>
+        <span>↗</span>
+        <span>⌂</span>
+    </div>
+
 </div>
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+<main class="main-content">
+
+    <div class="page-title">View Result</div>
+
+    <!-- BREADCRUMB -->
+
+    <div class="breadcrumb">
+        <span>Courses</span>
+        <span>Computer Courses:O LEVEL</span>
+        <span>View Result</span>
+    </div>
+
+    <!-- SEARCH OPTIONS -->
+
+    <div class="search-options">
+
+        <label>
+            <input type="radio" name="search" checked>
+            Search By Roll Number
+        </label>
+
+        <label>
+            <input type="radio" name="search">
+            Search By Candidate Name
+        </label>
+
+        <label>
+            <input type="radio" name="search">
+            Search By Registration Number
+        </label>
+
+    </div>
+
+    <!-- RESULT FORM -->
+
+    <form id="resultForm">
+
+    <table class="form-table">
+
+        <tr>
+            <td>Examination Year</td>
+
+            <td>
+                <select required>
+                    <option value="">--Select One--</option>
+                    <option>2026</option>
+                    <option>2025</option>
+                    <option>2024</option>
+                    <option>2023</option>
+                </select>
+            </td>
+
+            <td class="hint">(Select Examination Year you appeared in)</td>
+        </tr>
+
+        <tr>
+            <td>Examination Name</td>
+
+            <td>
+                <select required>
+                    <option value="">--Select One--</option>
+                    <option>January</option>
+                    <option>July</option>
+                </select>
+            </td>
+
+            <td class="hint">(Select Examination Name you appeared in)</td>
+        </tr>
+
+        <tr>
+            <td>Enter Roll Number</td>
+
+            <td>
+                <input type="text" placeholder="" required>
+            </td>
+
+            <td class="hint">(Roll No. printed on your admit card)</td>
+        </tr>
+
+        <tr>
+            <td>Enter DOB(dd-Mon-yyyy)</td>
+
+            <td>
+                <div class="dob-row">
+                    <input type="text" placeholder="">
+                    <span class="calendar">▦</span>
+                </div>
+            </td>
+
+            <td class="hint">(Date of Birth of the candidate)</td>
+        </tr>
+
+        <tr>
+            <td>Captcha Code</td>
+
+            <td>
+                <input type="text" id="captchaInput" required>
+            </td>
+
+            <td class="hint">(Enter captcha code shown in image below)</td>
+        </tr>
+
+        <tr>
+
+            <td></td>
+
+            <td>
+                <div class="captcha-area">
+                    <canvas id="captchaCanvas" width="460" height="126"></canvas>
+
+                    <button type="button" class="refresh"
+                    onclick="generateCaptcha()">⟳</button>
+                </div>
+            </td>
+
+            <td class="captcha-hint">
+                (Click here to obtain new captcha code if are not able to see the captcha code in image.)
+            </td>
+
+        </tr>
+
+    </table>
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+        <button type="submit">View</button>
+        <button type="reset">Reset</button>
+    </div>
+
+    </form>
+
+</main>
+
+<!-- RIGHT SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="side-box">
+        <div class="side-icon">🖥️</div>
+        Apply Online
+    </div>
+
+    <div class="side-box">
+        <div class="side-icon">📄</div>
+        View Filled Application
+    </div>
+
+    <div class="side-box">
+        <div class="side-icon">🔍</div>
+        Check Application Status
+    </div>
+
+    <div class="side-box">
+        <div class="side-icon">🔎</div>
+        Search Accredited Centre
+    </div>
+
+    <div class="side-links">
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Guideline: Online Exam Form
+        </a>
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Guideline: Online Registration
+        </a>
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Step By Step Instructions
+        </a>
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Affidavit for Guardian Name
+        </a>
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Protsahan Puraskar Instructions
+        </a>
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Protsahan Puraskar Info and FAQ
+        </a>
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Protsahan Steps for Institutes
+        </a>
+
+        <a href="#">
+            <span class="download-icon">⬇</span>
+            Protsahan Puraskar OM
+        </a>
+
+    </div>
+
+</aside>
+
+</div>
+
+<script>
+
+// DATE AND TIME
+
+function updateDateTime() {
+    const now = new Date();
+
+    document.getElementById("datetime").innerText =
+        now.toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        }) + "; " +
+        now.toLocaleTimeString("en-US");
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+
+// CAPTCHA GENERATOR
+
+let captchaText = "";
+
+function generateCaptcha() {
+
+    const canvas = document.getElementById("captchaCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    captchaText = "";
+
+    for (let i = 0; i < 6; i++) {
+        captchaText += chars.charAt(
+            Math.floor(Math.random() * chars.length)
+        );
+    }
+
+    ctx.fillStyle = "#050505";
+    ctx.fillRect(0, 0, 460, 126);
+
+    // Noise dots
+
+    for (let i = 0; i < 500; i++) {
+        ctx.fillStyle = "rgba(255,255,255,0.5)";
+        ctx.fillRect(
+            Math.random() * 460,
+            Math.random() * 126,
+            2,
+            2
+        );
+    }
+
+    // Captcha text
+
+    ctx.font = "bold 65px Georgia";
+    ctx.fillStyle = "#ffffff";
+    ctx.textBaseline = "middle";
+
+    ctx.save();
+    ctx.translate(20, 63);
+    ctx.rotate(-0.04);
+    ctx.fillText(captchaText, 0, 0);
+    ctx.restore();
+
+    // Lines
+
+    for (let i = 0; i < 6; i++) {
+        ctx.strokeStyle = "rgba(150,150,150,0.4)";
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * 460, Math.random() * 126);
+        ctx.lineTo(Math.random() * 460, Math.random() * 126);
+        ctx.stroke();
+    }
+}
+
+generateCaptcha();
+
+
+// FORM SUBMISSION
+
+document.getElementById("resultForm").addEventListener("submit",
+function(e) {
+    e.preventDefault();
+
+    const enteredCaptcha =
+        document.getElementById("captchaInput").value.toUpperCase();
+
+    if (enteredCaptcha !== captchaText) {
+        alert("Invalid Captcha Code!");
+        generateCaptcha();
+        document.getElementById("captchaInput").value = "";
+        return;
+    }
+
+    alert("Form submitted successfully! Demo page only.");
+});
+
+</script>
 
 </body>
 </html>
